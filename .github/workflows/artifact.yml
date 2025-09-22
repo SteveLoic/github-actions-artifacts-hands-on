@@ -26,6 +26,6 @@ jobs:
           name: hello-artifact
 
       - name: Display All File
-        run: ls -a
+        run: cat hello.txt
           
       
