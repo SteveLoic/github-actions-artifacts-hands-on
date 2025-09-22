@@ -1,11 +1,8 @@
 name: Workflow Demo
-
 on: [push]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -17,4 +14,17 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: hello-artifact
-        path: hello.txt
+        path: ./artifacts
+
+  download:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the text file
+        uses: actions/download-artifact@v5
+        with:
+          name: hello-artifact
+      - name: Display file content
+        run: cat hello-artifact
+          
+      
