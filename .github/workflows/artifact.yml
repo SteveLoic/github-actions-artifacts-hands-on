@@ -25,7 +25,7 @@ jobs:
         with:
           name: hello-artifact
 
-      - name: Display file content
-        run: cat hello-artifact
+      - name: Display All File
+        run: ls -a
           
       
