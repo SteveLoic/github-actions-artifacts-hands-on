@@ -9,12 +9,15 @@ jobs:
 
     - name: Create a text file
       run: echo "Hello, world!" > hello.txt
+    
+    - name: Move file to artifacts folder
+      run: mkdir -p artifacts && mv hello.txt artifacts/
 
     - name: Archive text file
       uses: actions/upload-artifact@v4
       with:
         name: hello-artifact
-        path: hello.txt
+        path: ./artifacts
 
   download:
     needs: build
@@ -26,6 +29,6 @@ jobs:
           name: hello-artifact
 
       - name: Display file content
-        run: cat hello-artifact/hello.txt
+        run: cat  ./artifacts/hello.txt
           
       
