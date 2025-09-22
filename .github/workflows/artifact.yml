@@ -24,6 +24,9 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: hello-artifact
+
+      - name: Download the text file
+        uses: ls -la
           
       - name: Display file content
         run: cat hello-artifact/hello.txt
